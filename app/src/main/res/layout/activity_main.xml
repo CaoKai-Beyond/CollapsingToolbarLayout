@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/act_profile_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/transparent"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:statusBarScrim="@color/transparent">
+
+            <com.weibo.internationa.ProfileMaskForegroundImageView
+                android:id="@+id/profile_header_bg"
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                android:background="@color/color_card_bg"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.75" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/transparent"
+                android:theme="@style/Theme.AppCompat"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/back_icon"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <LinearLayout
+                    android:id="@+id/profile_title_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/profile_title_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="标题"
+                        android:textColor="@color/color_level_4"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/profile_title_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:text="小标题"
+                        android:textColor="@color/color_level_4"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/act_profile_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_card_bg" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <FrameLayout
+        android:id="@+id/header_layout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="14dp"
+        app:layout_anchor="@+id/appBar"
+        app:layout_anchorGravity="bottom|right|start"
+        app:layout_behavior="com.weibo.internationa.MyProfileBtnBehavior">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_header_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="TODO"
+            android:src="@drawable/head" />
+
+        <ImageView
+            android:id="@+id/profile_person_verified"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom|right"
+            android:contentDescription="TODO"
+            android:src="@drawable/user_verified_celebrity_large"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/act_article_scroll2top"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="64dp"
+        android:src="@drawable/ic_fab_top"
+        android:visibility="invisible"
+        app:backgroundTint="@color/color_level_4"
+        app:fabSize="mini"
+        app:layout_anchorGravity="center" />
+</android.support.design.widget.CoordinatorLayout>
